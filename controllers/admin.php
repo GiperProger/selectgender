@@ -66,7 +66,7 @@ class SELECTGENDER_CTRL_Admin extends ADMIN_CTRL_Abstract
         
         $this->setPageHeading(OW::getLanguage()->text('selectgender', 'config_page_heading'));
 
-        $isSkadate = OW::getPluginManager()->getPlugin('skadate')->isActive();
+        $isSkadate = OW::getPluginManager()->isPluginActive('skadate');
 
         $this->assign('isSkadate', $isSkadate);
 
