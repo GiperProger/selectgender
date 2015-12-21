@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<plugin>
+	<name>Select gender</name>
+	<key>selectgender</key>
+	<description>The plugin can restrict visiting of profiles of the same gender or vice versa,
+        it can allow members of the same gender visit profiles of each other.
+        This option can be applied for the photos as well. One can configure the search and join page that way so a male can find females only and vice versa.
+        There's an additional option - "To show the join page" in case when a non-logged-in user tries to view the profile
+    </description>
+    <author>Sergey Pryadkin</author>
+    <authorEmail>GiperProger@gmail.com</authorEmail>
+    <authorUrl>http://www.oxwall.org/user/GiperProger</authorUrl>
+	<developerKey>5a2823209beb0450c79a1c033ed5c49c</developerKey>
+    <build>1</build>
+    <copyright>(C) 2015 Pryadkin Sergey GiperProger@gmail.com</copyright>
+    <license>OSCL</license>
+    <licenseUrl>http://www.oxwall.org/store/oscl</licenseUrl>
+</plugin>
+
+
+	
