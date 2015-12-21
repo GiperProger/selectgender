@@ -59,24 +59,26 @@
 
 </table>
 
+{if $isSkadate}
+
 <table class="ow_table_1 ow_form">
     <tr>
         <th class="ow_name ow_txtleft" colspan="3">
             <span class="ow_section_icon ow_ic_gear_wheel">{text key='selectgender+search_settings'}</span>
         </th>
     </tr>
-    
+
     <tr class="{cycle values='ow_alt1, ow_alt2'}">
         <td class="ow_label">{label name='opositeMatchSexSearch'}</td>
         <td class="ow_value">
             {input name='opositeMatchSexSearch'} {error name='opositeMatchSexSearch'}
         </td>
         <td class="ow_desc ow_small">{text key='selectgender+opposite_match_sex_search_desc'}</td>
-        
-        
+
+
     </tr>
     <tr>
-    <td class="ow_label">{label name='sameMatchSexSearch'}</td>
+        <td class="ow_label">{label name='sameMatchSexSearch'}</td>
         <td class="ow_value">
             {input name='sameMatchSexSearch'} {error name='sameMatchSexSearch'}
         </td>
@@ -99,17 +101,20 @@
             {input name='opositeMatchSexJoin'} {error name='opositeMatchSexJoin'}
         </td>
         <td class="ow_desc ow_small">{text key='selectgender+opposite_match_sex_join_desc'}</td>
-        </tr>
-          <tr>
+    </tr>
+    <tr>
         <td class="ow_label">{label name='sameMatchSexJoin'}</td>
         <td class="ow_value">
             {input name='sameMatchSexJoin'} {error name='sameMatchSexJoin'}
         </td>
         <td class="ow_desc ow_small">{text key='selectgender+same_match_sex_join_desc'}</td>
-        </tr>
-    
+    </tr>
+
 
 </table>
+{/if}
+
+
 
 <table class="ow_table_1 ow_form">
     <tr>

@@ -189,8 +189,6 @@ class SELECTGENDER_CLASS_EventHandler
         
     }
     
-  
-    
     public function photoGetPhotoList( BASE_CLASS_QueryBuilderEvent $event )
     {
         
@@ -198,17 +196,34 @@ class SELECTGENDER_CLASS_EventHandler
         {
             return;
         }
+
+
+        if(OW::getPluginManager()->getPlugin('skadate'))
+        {
+            $this->photoFiltrSkadate($event);
+        }
+
+        else
+        {
+            $this->photoFiltrOxwall($event);
+        }
+
         
+    }
+
+    private function photoFiltrSkadate($event)
+    {
+
         $params = $event->getParams();
         $aliases = $params['tables'];
-        $currentId = OW::getUser()->getId();     
+        $currentId = OW::getUser()->getId();
 
-        $sex = BOL_QuestionService::getInstance()->getQuestionData(array($currentId), array('sex')); 
-        
+        $sex = BOL_QuestionService::getInstance()->getQuestionData(array($currentId), array('sex'));
+
         if( $this->onlyDifferentSexCanSeePhoto )
-        {    
+        {
             $join = ' INNER JOIN `' . BOL_QuestionDataDao::getInstance()->getTableName() . '` AS `bqdt` ON(`' . $aliases['content'] . '`.`userId` = `bqdt`.`userId`
-                AND `bqdt`.`questionName` = \'sex\' 
+                AND `bqdt`.`questionName` = \'sex\'
                 AND (`bqdt`.`intValue` != '.$sex[$currentId]['sex'].' OR `' . $aliases['content'] . '`.`userId` = '.$currentId.' )) ';
             $params = array(
                 'sex' => $sex[$currentId]['sex'],
@@ -217,11 +232,11 @@ class SELECTGENDER_CLASS_EventHandler
 
             $event->addJoin($join);
         }
-        
+
         if( $this->onlySameSexCanSeePhoto )
-        { 
+        {
             $join = ' INNER JOIN `' . BOL_QuestionDataDao::getInstance()->getTableName() . '` AS `bqdt` ON(`' . $aliases['content'] . '`.`userId` = `bqdt`.`userId`
-                AND `bqdt`.`questionName` = \'sex\' 
+                AND `bqdt`.`questionName` = \'sex\'
                 AND (`bqdt`.`intValue` = '.$sex[$currentId]['sex'].' OR `' . $aliases['content'] . '`.`userId` = '.$currentId.' )) ';
             $params = array(
                 'sex' => $sex[$currentId]['sex'],
@@ -230,7 +245,6 @@ class SELECTGENDER_CLASS_EventHandler
 
             $event->addJoin($join);
         }
-        
     }
     
 }
